@@ -1,7 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan Van Hyning</title>
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+        const g = 1;
+        // var w = Math.round(0.9*window.innerWidth);
+        // var h = Math.round(0.9*window.innerHeight);
+
+        var canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext('2d');
+
+        function BallPit(balls){
+
+            this.balls = balls;
+
+            this.ballsCollide = function(){
+                balls.forEach(balls => {
+                    
+                });
+
+            }
+            
+            this.run = function(){
+                
+            }
+        }
+        
+
+        function Ball(xpos,ypos,xvel,yvel,size,index,color){
+            this.xpos = xpos;
+            this.ypos = ypos;
+            this.xvel = xvel;
+            this.yvel = yvel;
+            this.size = size;
+            this.index = index
+            this.color = color;
+
+            this.update = function () {
+                this.yvel = this.yvel + g;
+                this.ypos = this.ypos + this.yvel;
+               
+            };
+            
+            this.collisionCheck = function(h){
+                if (this.ypos >= (h - this.size)){
+                    this.ypos = (h - this.size);
+                    this.yvel = -0.7*this.yvel;
+                }
+            };
+
+            this.display = function () {
+                ctx.beginPath();
+                ctx.arc(this.xpos, this.ypos, this.size, 0, 2 * Math.PI, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            };
+        }
+
+        const ball1 = new Ball(100,100,0,0,50,1,"blue");
+        const ball2 = new Ball(400,100,0,0,25,2,"red");
+        const ball3 = new Ball(600,200,0,0,75,3,"green");
+        // const balls = [ball1,ball2,ball3];
+        // const ballpit = new BallPit(balls);
+
+
+        function init() {
+            canvas.width = Math.round(0.9*window.innerWidth);
+            canvas.height = Math.round(0.9*window.innerHeight);
+            
+            ball1.display();
+            ball2.display();
+            ball3.display();
+
+            window.requestAnimationFrame(draw);
+        }
+
+        function draw() {
+            canvas.width = Math.round(0.8*window.innerWidth);
+            canvas.height = Math.round(0.8*window.innerHeight);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ball1.update();
+            ball2.update();
+            ball3.update();
+            ball1.collisionCheck(canvas.height);
+            ball2.collisionCheck(canvas.height);
+            ball3.collisionCheck(canvas.height);
+            ball1.display();
+            ball2.display();
+            ball3.display()
+            window.requestAnimationFrame(draw);
+        }
+
+        init();
+    </script>
+
 </body>
+
 </html>
