@@ -103,6 +103,12 @@
             window.requestAnimationFrame(draw);
         }
 
+        document.addEventListener('click', function(event) {
+        ball1.ypos = 10;
+        ball2.ypos = 10;
+        ball3.ypos = 10;
+        });
+
         init();
     </script>
 
