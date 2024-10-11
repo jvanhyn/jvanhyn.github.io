@@ -1,6 +1,48 @@
+
+* {
+  margin: 0;
+}
+
+html {
+  padding: 20px;
+  font:
+    12px/20px Arial,
+    sans-serif;
+}
+
 body{
-    background-color: black;
+  background-color: black;
 }
-#myCanvas{
-    background-color: black;
+
+div {
+  opacity: 1;
+  position: relative;
 }
+
+h1 {
+  font: inherit;
+  font-weight: bold;
+}
+
+
+#div1 {
+  z-index: 5;
+  margin-bottom: 190px;
+}
+
+#div3 {
+  z-index: 6;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left:-250px;
+  margin-top:-300px;
+  width:500px;
+  border-radius: 30px;
+  background-color: white;
+  padding: 40px 20px 20px;
+}
+
+
+

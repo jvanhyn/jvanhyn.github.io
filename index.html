@@ -2,144 +2,71 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="jquery-3.7.1.min.js"></script>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jonathan Van Hyning</title>
+    <title>BlueOrigin</title>
 </head>
 
 <body>
+    <div id="div1">
+        <canvas id="myCanvas"></canvas>
+    </div>
 
-    <canvas id="myCanvas"></canvas>
+    <div id="div3">
+        <p>
+            Dear Hiring Manager,
+        </p>
+        <br>
+        <p>
+            I am writing to express interest in the position of Computer Programming/Robotics/Tech Teacher at
+            Fusion
+            Academy. With a master’s degree in Controls and Mechatronics Engineering and a bachelor’s degree in
+            Aerospace Engineering from UC San Diego, I have a strong base in engineering fundamentals. In
+            addition, I
+            have multiple years of experience working and teaching in lab environments. Outside of engineering,
+            I am an
+            avid hiker, skier, and sailor who loves the central coast! I am excited to present my application
+            for this
+            position as I feel it’s a perfect match for my experience and aspirations.
+        </p>
+        <br>
+        <p>
+            I have experience in teaching, curriculum development, personnel management, and manufacturing. I
+            was the
+            Director of Engineering and Chief Safety Officer for SEDS at UCSD, a multi-project liquid rocketry
+            team with
+            over 100 members and $100k in NCRF funding. I received hands-on training in manual and CNC machining
+            and
+            metrology equipment from faculty and staff. I then designed a four-day onboarding program to teach
+            manufacturing principles and safety to new club members. Similarly, while working for COSMOS as a
+            co-instructor, I taught high school students principles of robotics engineering, including how to
+            operate
+            manufacturing equipment (CAD, laser cutting, 3D printing), developed curriculums on computer vision
+            in
+            Python, and oversaw student-led projects.
+        </p>
+        <br>
+        <p>
+            Through my previous work, I have come to love teaching and am excited to advance my career in
+            education.
+            This position would not only allow me to apply the skills from my formal education, but would also
+            enable me to further myself as an engineer through interactions with students. I am passionate about
+            helping others along their educational journeys through hands-on work; I believe engineering is not
+            something that can be
+            learned from a textbook alone.
 
-    <script>
-        const g = 1;
-        // var w = Math.round(0.9*window.innerWidth);
-        // var h = Math.round(0.9*window.innerHeight);
+        </p>
+        <br>
+        <p>
+            I am eager to learn more details about the position and demonstrate my abilities. Thank you for your
+            consideration.
+        </p>
+        <br>
+        <p>Jonathan Van Hyning</p>
+    </div>
 
-        var canvas = document.getElementById("myCanvas");
-        const ctx = canvas.getContext('2d');
-
-        function BallPit(balls){
-
-            this.balls = balls;
-
-            this.ballsCollide = function(){
-                balls.forEach(balls => {
-                    
-                });
-
-            }
-            
-            this.run = function(){
-                
-            }
-        }
-        
-
-        function Ball(xpos,ypos,xvel,yvel,size,index,color){
-            this.xpos = xpos;
-            this.ypos = ypos;
-            this.xvel = xvel;
-            this.yvel = yvel;
-            this.size = size;
-            this.index = index
-            this.color = color;
-
-            this.update = function () {
-                this.yvel = this.yvel + g;
-                this.ypos = this.ypos + this.yvel;
-               
-            };
-            
-            this.collisionCheck = function(h){
-                if (this.ypos >= (h - this.size)){
-                    this.ypos = (h - this.size);
-                    this.yvel = -1*this.yvel;
-                }
-            };
-
-            this.display = function () {
-                ctx.beginPath();
-                ctx.arc(this.xpos, this.ypos, this.size, 0, 2 * Math.PI, false);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            };
-        }
-
-        const ball1 = new Ball(100,100,0,0,25,1,"red");
-        const ball2 = new Ball(175,100,0,0,50,2,"orange");
-        const ball3 = new Ball(300,100,0,0,75,3,"yellow");
-        const ball4 = new Ball(475,100,0,0,100,3,"green");
-        const ball5 = new Ball(700,100,0,0,125,3,"blue");
-        const ball6 = new Ball(975,100,0,0,150,3,"purple");
-
-
-
-        // const balls = [ball1,ball2,ball3];
-        // const ballpit = new BallPit(balls);
-
-
-        function init() {
-            canvas.width = Math.round(0.9*window.innerWidth);
-            canvas.height = Math.round(0.9*window.innerHeight);
-            
-            ball1.display();
-            ball2.display();
-            ball3.display();
-
-            window.requestAnimationFrame(draw);
-        }
-
-        function draw() {
-            canvas.width = Math.round(window.innerWidth);
-            canvas.height = Math.round(0.8*window.innerHeight);
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ball1.update();
-            ball2.update();
-            ball3.update();
-            ball4.update();
-            ball5.update();
-            ball6.update();
-            ball1.collisionCheck(canvas.height);
-            ball2.collisionCheck(canvas.height);
-            ball3.collisionCheck(canvas.height);
-            ball4.collisionCheck(canvas.height);
-            ball5.collisionCheck(canvas.height);
-            ball6.collisionCheck(canvas.height);
-            ball1.display();
-            ball2.display();
-            ball3.display();
-            ball4.display();
-            ball5.display();
-            ball6.display();
-
-
-            window.requestAnimationFrame(draw);
-        }
-
-        document.addEventListener('click', function(event) {
-        X = event.clientX;
-        Y = event.clientY;
-        ball1.ypos = 10;
-        ball2.ypos = 10;
-        ball3.ypos = 10;
-        ball4.ypos = 10;
-        ball5.ypos = 10;
-        ball6.ypos = 10;
-
-        ball1.yvel = 0;
-        ball2.yvel = 0;
-        ball3.yvel = 0;
-        ball4.yvel = 0;
-        ball5.yvel = 0;
-        ball6.yvel = 0;
-        });
-
-        init();
-    </script>
+    <script src="balls.js"></script>
 
 </body>
 
