@@ -56,7 +56,7 @@
             this.collisionCheck = function(h){
                 if (this.ypos >= (h - this.size)){
                     this.ypos = (h - this.size);
-                    this.yvel = -0.7*this.yvel;
+                    this.yvel = -1*this.yvel;
                 }
             };
 
@@ -68,9 +68,15 @@
             };
         }
 
-        const ball1 = new Ball(100,100,0,0,50,1,"blue");
-        const ball2 = new Ball(400,100,0,0,25,2,"red");
-        const ball3 = new Ball(600,200,0,0,75,3,"green");
+        const ball1 = new Ball(100,100,0,0,25,1,"red");
+        const ball2 = new Ball(175,100,0,0,50,2,"orange");
+        const ball3 = new Ball(300,100,0,0,75,3,"yellow");
+        const ball4 = new Ball(475,100,0,0,100,3,"green");
+        const ball5 = new Ball(700,100,0,0,125,3,"blue");
+        const ball6 = new Ball(975,100,0,0,150,3,"purple");
+
+
+
         // const balls = [ball1,ball2,ball3];
         // const ballpit = new BallPit(balls);
 
@@ -87,26 +93,49 @@
         }
 
         function draw() {
-            canvas.width = Math.round(0.8*window.innerWidth);
+            canvas.width = Math.round(window.innerWidth);
             canvas.height = Math.round(0.8*window.innerHeight);
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ball1.update();
             ball2.update();
             ball3.update();
+            ball4.update();
+            ball5.update();
+            ball6.update();
             ball1.collisionCheck(canvas.height);
             ball2.collisionCheck(canvas.height);
             ball3.collisionCheck(canvas.height);
+            ball4.collisionCheck(canvas.height);
+            ball5.collisionCheck(canvas.height);
+            ball6.collisionCheck(canvas.height);
             ball1.display();
             ball2.display();
-            ball3.display()
+            ball3.display();
+            ball4.display();
+            ball5.display();
+            ball6.display();
+
+
             window.requestAnimationFrame(draw);
         }
 
         document.addEventListener('click', function(event) {
+        X = event.clientX;
+        Y = event.clientY;
         ball1.ypos = 10;
         ball2.ypos = 10;
         ball3.ypos = 10;
+        ball4.ypos = 10;
+        ball5.ypos = 10;
+        ball6.ypos = 10;
+
+        ball1.yvel = 0;
+        ball2.yvel = 0;
+        ball3.yvel = 0;
+        ball4.yvel = 0;
+        ball5.yvel = 0;
+        ball6.yvel = 0;
         });
 
         init();
