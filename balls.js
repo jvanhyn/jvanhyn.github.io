@@ -1,7 +1,3 @@
-// var myDiv = document.getElementByClass("cover-letter.child");
-// myDiv.height = window.innerHeight;
-// myDiv.width = window.innerWidth;
-
 var canvas = document.getElementById("myCanvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
